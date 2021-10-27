@@ -1,50 +1,34 @@
-import React, {useState} from "react";
+import React from "react";
+import Saludar from "./components/Saludar";
+import BotonSaludar from "./components/BotonSaludar";
+import logo from "./logo.svg";
+import "./App.css";
 
-import Expenses from './components/Expenses/Expenses';
-import NewExpense from "./components/NewExpense/NewExpense";
-
-
-
-const DUMMY_EXPENSES = [
-  {
-    id: 'e1',
-    title: 'Toilet Paper',
-    amount: 94.12,
-    date: new Date(2020, 7, 14),
-  },
-  { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
-  {
-    id: 'e3',
-    title: 'Car Insurance',
-    amount: 294.67,
-    date: new Date(2021, 2, 28),
-  },
-  {
-    id: 'e4',
-    title: 'New Desk (Wooden)',
-    amount: 450,
-    date: new Date(2021, 5, 12),
-  },
-];
- 
-
-const App = () => {
- 
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
-
-
-  const addExpenseHandler = (expense) => {
-    setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses];
-    });
+function App() {
+  const user = {
+    nombre: "Judit",
+    primerApellido: "Lustres",
+    segundoApellido: "Carballo",
+    edad: 36,
+    color: "Naranja",
   };
 
+  const saludarFn = () => {};
   return (
-    <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        {/* <Saludar
+          name="Judit"
+          primerApellido="Lustres"
+          segundoApellido="Carballo"
+          edad="36"
+        /> */}
+        <Saludar userInfo={user} />
+        <BotonSaludar saludarFn={saludarFn} />
+      </header>
     </div>
   );
-};
+}
 
 export default App;
